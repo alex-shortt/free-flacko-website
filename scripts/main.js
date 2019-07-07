@@ -902,29 +902,25 @@ function initShopify() {
       "X-Shopify-Storefront-Access-Token": "c93be35bf35584f666b857f0747fa13d"
     },
     body:
-      "{ \
-           products(first: 100, reverse: true) { edges { node { \
-			         variants(first: 100) { edges { node { \
-						           title \
-						           sku \
-						           price \
-						           availableForSale  \
-					      } } } \
-             } } } \
-           }"
+      '{ productByHandle(handle: "free-rocky-tee") { \
+                variants(first: 10) { edges { node { \
+                  title \
+                  sku \
+                  price \
+                  availableForSale \
+                } } } \
+            } }'
   })
     .then(function(r) {
       return r.json();
     })
     .then(function(data) {
       console.log("data", data);
-      var products = data.data.products.edges;
-      for (var i = 0; i < products.length; i++) {
-        var variants = products[i].node.variants.edges;
-        for (var x = 0; x < variants.length; x++) {
-          if (variants[x].node.availableForSale) {
-            skuMatch[variants[x].node.sku] = "notnull";
-          }
+      var product = data.data.productByHandle;
+      var variants = product.variants.edges;
+      for (var x = 0; x < variants.length; x++) {
+        if (variants[x].node.availableForSale) {
+          skuMatch[variants[x].node.sku] = "notnull";
         }
       }
       console.log(skuMatch);
