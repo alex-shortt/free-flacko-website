@@ -840,7 +840,10 @@ function openCheckoutLink() {
     for (var i = 0; i < Object.keys(cart).length; i++) {
       var id = Object.keys(cart)[i];
       var variant = skuMatch[id];
-      lineItems.push({ variantId: variant.id, quantity: cart[id] });
+      lineItems.push({
+        variantId: variant.id,
+        quantity: cart[id]
+      });
     }
     shopClient.checkout
       .addLineItems(checkout.id, lineItems)
@@ -889,30 +892,44 @@ http://patorjk.com/software/taag/#p=display&f=Varsity&t=Payment
 */
 
 var checkoutShipping, checkoutEmail, orderData, shopClient;
-var items = [];
 var skuMatch = {};
 
 function initShopify() {
-  shopClient = ShopifyBuy.buildClient({
-    storefrontAccessToken: "def010462f108817d86f3213e083ccde",
-    domain: "awge-2018.myshopify.com",
-    appId: "6"
-  });
-
-  console.log(shopClient)
-
-  shopClient.collection.fetchAllWithProducts().then(function(collections) {
-    console.log("asf")
-    collections.forEach(function(collection) {
-      collection.products.forEach(function(product) {
-        product.variants.forEach(function(variant) {
-          skuMatch[variant.sku] = variant;
-          items.push(variant);
-        });
-      });
+  fetch("https://awge-2018.myshopify.com/api/2019-07/graphql.json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/graphql",
+      "X-Shopify-Storefront-Access-Token": "c93be35bf35584f666b857f0747fa13d"
+    },
+    body:
+      "{ \
+           products(first: 100, reverse: true) { edges { node { \
+			         variants(first: 100) { edges { node { \
+						           title \
+						           sku \
+						           price \
+						           availableForSale  \
+					      } } } \
+             } } } \
+           }"
+  })
+    .then(function(r) {
+      return r.json();
+    })
+    .then(function(data) {
+      console.log("data", data);
+      var products = data.data.products.edges;
+      for (var i = 0; i < products.length; i++) {
+        var variants = products[i].node.variants.edges;
+        for (var x = 0; x < variants.length; x++) {
+          if (variants[x].node.availableForSale) {
+            skuMatch[variants[x].node.sku] = "notnull";
+          }
+        }
+      }
+      console.log(skuMatch);
+      updateBuyButton();
     });
-    updateBuyButton();
-  });
 }
 
 /*
