@@ -258,8 +258,6 @@ function openModal(modal) {
   $(document).on("click", function(e) {
     var target = $(e.target);
 
-    if ($("#model-modal").hasClass("modal-opened")) return;
-
     if ($(target).hasClass("modal-overlay")) {
       $(target)
         .find(".modal-modal")
@@ -419,18 +417,9 @@ function shopLoad() {
   });
 
   $(".shop-items-item").click(function() {
-    if (shop[currentItem.index].camera != null) {
-      loadModel(
-        shop[currentItem.index].filename,
-        shop[currentItem.index].camera
-      );
-      openModal("model-modal");
-    }
-    var localPrice =
-      shop[currentItem.index].price == "Sold Out"
-        ? "Sold Out"
-        : "$" + shop[currentItem.index].price;
-    $("#model-price").text(localPrice);
+    console.log("asdf")
+    noise.go();
+    setTimeout(function() { noise.pause() }, 750);
   });
 
   var img = new Image();
@@ -926,147 +915,4 @@ function initShopify() {
       console.log(skuMatch);
       updateBuyButton();
     });
-}
-
-/*
-  ______         __   ____    ____               __        __
- / ____ `.      |  ] |_   \  /   _|             |  ]      [  |
- `'  __) |  .--.| |    |   \/   |   .--.    .--.| | .---.  | |  .--.
- _  |__ './ /'`\' |    | |\  /| | / .'`\ \/ /'`\' |/ /__\\ | | ( (`\]
-| \____) || \__/  |   _| |_\/_| |_| \__. || \__/  || \__., | |  `'.'.
- \______.' '.__.;__] |_____||_____|'.__.'  '.__.;__]'.__.'[___][\__) )
-
-Models.js
-http://patorjk.com/software/taag/#p=display&f=Varsity&t=3d%20Models
-*/
-var scene, camera, renderer, controls, object;
-
-function initModel(container) {
-  var width = window.innerWidth;
-  var height = window.innerHeight;
-
-  scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-  renderer = new THREE.WebGLRenderer({
-    alpha: true
-  });
-  var loader = new THREE.JSONLoader();
-
-  renderer.setSize(width, height);
-  renderer.setClearColor(0x000000, 0); //0xfD35144
-  //#D35144
-  //scene.background = new THREE.Color(0xf1B1B1B);
-  $(container).append(renderer.domElement);
-
-  var light = new THREE.AmbientLight(0xe0e0e0); // soft white light
-  scene.add(light);
-
-  camera.position.z = 5;
-
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enablePan = false;
-
-  window.addEventListener("resize", function() {
-    var width = window.innerWidth;
-    var height = window.innerHeight;
-    renderer.setSize(width, height);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-  });
-}
-
-function animateModel() {
-  requestAnimationFrame(animateModel);
-  renderer.render(scene, camera);
-  controls.update();
-}
-
-function setCameraPosition(x, y, z) {
-  camera.position.x = x;
-  camera.position.y = y;
-  camera.position.z = z;
-}
-
-function animateModelLoading() {
-  var loadText = "Loading";
-  var num = (
-    $("#model-loading")
-      .text()
-      .match(/\./g) || []
-  ).length;
-  num++;
-  if (num > 3) num = 1;
-  for (var i = 0; i < num; i++) {
-    loadText += ".";
-  }
-  $("#model-loading").text(loadText);
-}
-
-function showModelLoading() {
-  $("#model-loading").animate(
-    {
-      opacity: 1
-    },
-    1000
-  );
-  return setInterval(animateModelLoading, 400);
-}
-
-function hideModelLoading(id) {
-  $("#model-loading").animate(
-    {
-      opacity: 0
-    },
-    750
-  );
-  setTimeout(function() {
-    clearInterval(id);
-  }, 1000);
-}
-
-function loadModel(name, settings) {
-  var onProgress = function(xhr) {
-    if (xhr.lengthComputable) {
-      var percentComplete = (xhr.loaded / xhr.total) * 100;
-      console.log(Math.round(percentComplete, 2) + "% downloaded");
-    }
-  };
-
-  var onError = function(xhr) {};
-
-  if (object != null) {
-    scene.remove(object);
-  }
-  var loadingID = showModelLoading();
-
-  var mtlLoader = new THREE.MTLLoader();
-  mtlLoader.setPath("./awge-media/models/");
-  mtlLoader.load(name + ".mtl", function(materials) {
-    materials.preload();
-    var objLoader = new THREE.OBJLoader();
-    objLoader.setMaterials(materials);
-    objLoader.setPath("https://dwvo2npct47gg.cloudfront.net/models/");
-    objLoader.load(
-      name + ".obj",
-      function(objectOBJ) {
-        hideModelLoading(loadingID);
-        setTimeout(function() {
-          object = objectOBJ;
-          object.position.y = 0;
-          object.rotation.x = 0;
-
-          setCameraPosition(settings.pos[0], settings.pos[1], settings.pos[2]);
-          controls.minDistance = settings.minDist;
-          controls.maxDistance = settings.maxDist;
-
-          if (settings.scale)
-            object.scale.set(settings.scale, settings.scale, settings.scale);
-
-          scene.add(object);
-        }, 750);
-      },
-      onProgress,
-      onError
-    );
-  });
 }
