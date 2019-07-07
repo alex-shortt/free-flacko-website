@@ -1,3 +1,14 @@
+var shop = {
+  1: {
+    name: "Free Flacko Tee<br/>ALL Sales Final",
+    filename: "free-rocky",
+    price: "50",
+    baseSKU: "IGEN-SS-BLK",
+    sizes: ["SM", "MD", "LG", "XL"]
+  }
+};
+
+
 /*
  ____    ____          _
 |_   \  /   _|        (_)
@@ -845,7 +856,6 @@ function openCheckoutLink() {
   var lineItems = { lineItems: checkoutItems };
   lineItems = JSON.stringify(lineItems);
   lineItems = lineItems.replace(/\"([^(\")"]+)\":/g, "$1:");
-  console.log(lineItems);
 
   fetch("https://awge-2018.myshopify.com/api/2019-07/graphql.json", {
     method: "POST",
@@ -868,7 +878,6 @@ function openCheckoutLink() {
       return r.json();
     })
     .then(function(data) {
-      console.log("data", data);
       window.location = data.data.checkoutCreate.checkout.webUrl;
     });
 }
@@ -930,7 +939,6 @@ function initShopify() {
       return r.json();
     })
     .then(function(data) {
-      console.log("data", data);
       var product = data.data.productByHandle;
       var variants = product.variants.edges;
       for (var x = 0; x < variants.length; x++) {
@@ -938,7 +946,6 @@ function initShopify() {
           skuMatch[variants[x].node.sku] = variants[x].node;
         }
       }
-      console.log(skuMatch);
       updateBuyButton();
     });
 }
