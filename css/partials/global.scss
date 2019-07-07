@@ -56,13 +56,6 @@ body {
         height: 100%;
         width: 100%;
       }
-
-      &-mobile {
-        @media #{$smartphones} {
-          display: inherit;
-          background-image: url("https://dwvo2npct47gg.cloudfront.net/images/border-compressed-2.png");
-        }
-      }
     }
 
     &-shape {

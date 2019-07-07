@@ -49,11 +49,8 @@
   </div>
   <div class="awge-tube-shape">
     <div id="awge-content" class="awge-content">
-      <div id="awge-home" class="awge-home" onclick="window.location.hash='home'">
-        <img src="https://dwvo2npct47gg.cloudfront.net/gifs/awge-home.gif">
-      </div>
       <div class="home-navbar home-navbar-mobile">
-        <img src="https://dwvo2npct47gg.cloudfront.net/images/awge-header-logo.png" onclick="window.location.hash='home'" />
+        <img src="https://dwvo2npct47gg.cloudfront.net/images/awge-header-logo.png"  />
       </div>
       <div class="shop-content">
         <div class="shop-container">
@@ -178,6 +175,7 @@
       initModel($("#model-container"));
       animateModel();
     });
+    initModal();
     initShopify();
     refreshCart();
     initImageGlitch();

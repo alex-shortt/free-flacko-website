@@ -893,16 +893,16 @@ var items = [];
 var skuMatch = {};
 
 function initShopify() {
-  const shopUrl = "awge-2018.myshopify.com";
-  const accessToken = args[1] || "<storefront api access token found from private app page>";
-
   shopClient = ShopifyBuy.buildClient({
     storefrontAccessToken: "def010462f108817d86f3213e083ccde",
     domain: "awge-2018.myshopify.com",
     appId: "6"
   });
 
+  console.log(shopClient)
+
   shopClient.collection.fetchAllWithProducts().then(function(collections) {
+    console.log("asf")
     collections.forEach(function(collection) {
       collection.products.forEach(function(product) {
         product.variants.forEach(function(variant) {
