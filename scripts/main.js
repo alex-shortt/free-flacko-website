@@ -405,7 +405,7 @@ function autoGlitch() {
   setTimeout(function() {
     if(noise) noise.pause();
   }, Math.random() * 300 + 400);
-  setTimeout(autoGlitch, Math.random() * 2000 + 3000);
+  setTimeout(autoGlitch, Math.random() * 3000 + 4000);
 }
 
 function shopLoad() {
@@ -471,7 +471,7 @@ function shopLoad() {
 }
 
 function resolveImgURL(name) {
-  return "https://dwvo2npct47gg.cloudfront.net/gifs/" + name + ".gif";
+  return "https://dwvo2npct47gg.cloudfront.net/images/" + name + ".png";
 }
 
 /*
