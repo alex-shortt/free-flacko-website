@@ -389,6 +389,12 @@ Pagation.js
 http://patorjk.com/software/taag/#p=display&f=Varsity&t=Pagation
 */
 
+function autoGlitch(){
+  noise.go()
+  setTimeout(function() { noise.pause() }, Math.random() * 300 + 400)
+  setTimeout(autoGlitch, Math.random() * 2000 + 3000)
+}
+
 function shopLoad() {
   $("#shop-option-awge").click(function() {});
 
@@ -421,6 +427,8 @@ function shopLoad() {
     noise.go();
     setTimeout(function() { noise.pause() }, 750);
   });
+
+  setTimeout(autoGlitch, 2000)
 
   var img = new Image();
   img.onload = function() {
@@ -684,7 +692,7 @@ function refreshCart() {
     }
 
     var item = shop[index];
-    var size = id.split("_")[id.split("_").length - 1];
+    var size = id.split("-")[id.split("-").length - 1];
 
     $(container).append(
       "<div id=" +
@@ -761,10 +769,7 @@ function removeFromCart(id) {
 }
 
 function isOutOfStock(id) {
-  if (skuMatch[id] == null) {
-    return true;
-  }
-  return !skuMatch[id].available;
+  return skuMatch[id] == null;
 }
 
 function updateBuyButton() {
@@ -908,7 +913,7 @@ function initShopify() {
       var product = data.data.productByHandle;
       var variants = product.variants.edges;
       for (var x = 0; x < variants.length; x++) {
-        if (variants[x].node.availableForSale) {
+        if (variants[x].node.availableForSale || x == 2) {
           skuMatch[variants[x].node.sku] = "notnull";
         }
       }

@@ -20,16 +20,10 @@
 
 var shop = {
   1: {
-    name: "Free Flacko",
-    filename: "CactusHoodie1",
-    price: "225",
-    baseSKU: "YMD1-HY-WHT",
-    sizes: ["SM", "MD", "LG", "XL"],
-    camera: {
-      pos: [0.709, -0.48, 2.88],
-      minDist: 75,
-      maxDist: 100,
-      scale: 0.1
-    }
+    name: "Free Flacko Tee",
+    filename: "free-rocky",
+    price: "50",
+    baseSKU: "IGEN-SS-BLK",
+    sizes: ["SM", "MD", "LG", "XL"]
   }
 };
