@@ -1,0 +1,189 @@
+<html>
+
+<head>
+  <!--Page Details-->
+  <meta charset="UTF-8">
+  <title>AWGE, a creative agency founded by A$AP Rocky.</title>
+  <meta name="description" content="AWGE: A creative agency founded by A$AP Rocky. Rules: #1 Never reveal what AWGE means. #2 When in doubt always refer to rule #1.">
+  <meta name="keywords" content="AWGE, Design, Style, A$AP, A$AP Rocky, ASAP, ASAP Rocky, Shirts, Hats, 3D">
+  <meta name="author" content="AWGE x A$AP Rocky">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="https://dwvo2npct47gg.cloudfront.net/images/awge-favicon.png" />
+  <meta name="google-site-verification" content="UPXlhM6TpbXIphqwLtIpuMkTm1qxSFiXxZ1P1zoHn5k" />
+
+  <!--CSS-->
+  <link rel="stylesheet" type="text/css" href="css/main.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link href="https://vjs.zencdn.net/7.0.2/video-js.css" rel="stylesheet">
+
+  <!--External Scripts-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+  <script src="https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js" type="text/javascript"></script>
+
+  <!--Local Scripts-->
+  <script src="scripts/assets.min.js" type="text/javascript"></script>
+  <script src="scripts/definitions.js" type="text/javascript"></script>
+  <script src="scripts/main.min.js" type="text/javascript"></script>
+
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-97408879-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+<body>
+  <div id="awge-tube-border" class="awge-tube-border awge-tube-border-mobile">
+  </div>
+  <div class="awge-tube-shape">
+    <div id="awge-content" class="awge-content">
+      <div id="awge-home" class="awge-home" onclick="window.location.hash='home'">
+        <img src="https://dwvo2npct47gg.cloudfront.net/gifs/awge-home.gif">
+      </div>
+      <div class="home-navbar home-navbar-mobile">
+        <img src="https://dwvo2npct47gg.cloudfront.net/images/awge-header-logo.png" onclick="window.location.hash='home'" />
+      </div>
+      <div class="shop-content">
+        <div class="shop-container">
+          <div class="shop-type-position">
+            <div class="shop-type-container">
+              <div id="shop-option-awge" class="shop-option-awge shop-option-active">
+                <h1 class="shop-option-text">YAMS DAY</h1>
+              </div>
+              <div id="shop-option-tstng" class="shop-option-tstng">
+                <h1 class="shop-option-text">IN-GEN <i class="fas fa-external-link-alt shop-option-icon"></i></h1>
+              </div>
+              <div class="shop-option-cart" id="shop-option-cart">
+                <img class="modal-open shop-cart-image" data-modal="#cart-modal" src="https://dwvo2npct47gg.cloudfront.net/images/cart.png">
+              </div>
+            </div>
+          </div>
+          <div id="shop-items-container" class="shop-items-container">
+            <div class="shop-items-progress">
+              <h1 class="shop-progress-text shop-glitch-placeholder" id="shop-item-progress" data-text=""></h1>
+            </div>
+            <div id="shop-item" class="shop-items-item" data-modal="#model-modal">
+              <img id="shop-item-image" name="shirts-1" class="shop-item-image"></img>
+            </div>
+            <div id="shop-item-mobile" class="shop-items-item shop-items-item-mobile" data-modal="#model-modal">
+            </div>
+            <div class="shop-items-options">
+              <div class="shop-items-options-top">
+                <h1 class="shop-item-option shop-item-name shop-glitch-placeholder" data-text="" id="shop-item-name"></h1>
+                <h1 class="shop-item-option shop-item-price shop-glitch-placeholder" data-text="" id="shop-item-price"></h1>
+              </div>
+              <h5 id="shop-items-message" class="shop-items-message"></h5>
+              <div class="shop-items-options-middle" name="SIZE">
+                <div class="shop-size-wrapper" id="shop-size-button">
+                  <h1 onclick="openSizes()" class="shop-item-option shop-size-button">SIZE</h1>
+                </div>
+              </div>
+              <div class="shop-items-options-bottom ">
+                <h1 id="shop-item-decrease" class="shop-items-arrow">&lt;</h1>
+                <h1 class="shop-item-option"><span id="shop-buy-button" class="shop-buy-button">BUY</span></h1>
+                <h1 id="shop-item-increase" class="shop-items-arrow">&gt;</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="awge-copyright">
+          <h4 class="awge-copyright-text">&#169;&nbsp;&nbsp;2019&nbsp;&nbsp;AWGE <br /> <span class="awge-tc awge-terms">Terms and Conditions</span> <br /> <span class="awge-tc awge-privacy">Privacy Policy</span></h4>
+        </div>
+      </div>
+
+      <!-- Google Tag Manager -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PPBQ67" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>
+        (function(w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+          });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PPBQ67');
+      </script>
+      <!-- End Google Tag Manager -->
+
+    </div>
+    <div class="modal-overlay">
+      <div id="model-container" class="model-container modal-items-container"></div>
+      <h2 id="model-close" class='modal-close model-close' data-modal="#model-modal"><span>X</span></h2>
+      <div class='modal-modal model-modal' id='model-modal'>
+        <div id="model-loading" class="model-loading">Loading...</div>
+        <div id="model-price" class="model-price">...</div>
+        <h4 class="model-copyright awge-copyright-text">&#169;&nbsp;&nbsp;2019&nbsp;&nbsp;AWGE</h4>
+      </div>
+    </div>
+    <div class="modal-overlay">
+      <div class='modal-modal' id='cart-modal'>
+        <div class='modal-content'>
+          <h1 class="cart-close"><span id="cancel-order" class="modal-close" data-modal="#cart-modal">X</span></h1>
+          <h1 class='modal-title'>CART</h1>
+          <div id="cart-container" class="modal-items-container">
+          </div>
+          <h1 id="cart-checkout" class='modal-footer'>CHECKOUT</h1>
+        </div>
+      </div>
+    </div>
+    <div class="modal-overlay">
+      <div class='modal-modal notify-modal' id='notify-modal'>
+        <h1 id="notify-message" class='notify-message'>...</h1>
+        <br>
+        <h3><span class="notify-confirm modal-close" data-modal="#notify-modal">OK</span></h3>
+      </div>
+    </div>
+    <div class="modal-overlay">
+      <div class='modal-modal notify-modal' id='share-modal'>
+        <div class="share-modal-container a2a_kit a2a_kit_size_32 a2a_default_style">
+          <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+          <a class="a2a_button_facebook"></a>
+          <a class="a2a_button_twitter"></a>
+          <a class="a2a_button_tumblr"></a>
+          <a class="a2a_button_google_plus"></a>
+          <a class="a2a_button_reddit"></a>
+        </div>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <h3><span class="notify-confirm modal-close" data-modal="#share-modal">CLOSE</span></h3>
+      </div>
+    </div>
+    <div class="modal-overlay">
+      <div class='modal-modal pictures-modal' id='pictures-modal'>
+        <img id='pictures-modal-image' data-modal="#pictures-modal" class="pictures-modal-image modal-close" src="" />
+      </div>
+    </div>
+    <div id="awge-overlay" class="awge-overlay"></div>
+  </div>
+
+  <script>
+    $("#model-container").ready(function() {
+      initModel($("#model-container"));
+      animateModel();
+    });
+    initShopify();
+    refreshCart();
+    initImageGlitch();
+    printCredits();
+    shopLoad();
+  </script>
+</body>
+
+</html>

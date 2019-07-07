@@ -1,0 +1,356 @@
+@mixin shop-option {
+  flex: 1;
+  margin: 20px 0;
+  //border: 2px solid black;
+  opacity: 0.85;
+  padding: 0 7px;
+  cursor: pointer;
+  transition: opacity 0.175s linear;
+
+  &:hover {
+    opacity: 1;
+  }
+  @media #{$smartphones} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    min-width: 75px;
+    margin: 15px 0;
+  }
+}
+
+.shop {
+  &-content {
+    background: #d35144;
+    background-image: url("https://dwvo2npct47gg.cloudfront.net/gifs/yamsday-background.gif");
+    background-size: cover;
+    background-position: center;
+    //background-position-x: 300px; //360px
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    @media #{$smartphones} {
+      height: calc(100% - 60px);
+      filter: brightness(1.2);
+    }
+  }
+
+  &-container {
+    height: 550px;
+    width: 510px;
+    //background: rgba(35, 35, 35, 0.31); //black;
+    margin: auto;
+    @media #{$smartphones} {
+      height: 100%;
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  &-type {
+    &-position {
+      position: relative;
+      height: 0;
+      width: 0;
+      z-index: 2;
+      @media #{$smartphones} {
+        position: absolute;
+      }
+    }
+
+    &-container {
+      height: 430px;
+      width: 120px;
+      transform: translateX(-65%);
+      display: flex;
+      flex-direction: column;
+      padding: 30px 0;
+      @media #{$smartphones} {
+        transform: none;
+        padding: 12vh 0 0 5vw;
+        height: 40vh;
+        width: 19vw;
+      }
+    }
+  }
+
+  &-option {
+    &-awge {
+      @include shop-option;
+      background: #1a2d93;
+      box-shadow: 3px 0 #1a2d93, -3px 0 #1a2d93, 0 -3px #1a2d93, 0 3px #1a2d93,
+        6px 0 black, -6px 0 black, 0 -6px black, 0 6px black, 0 0 0 3px black;
+    }
+
+    &-tstng {
+      @include shop-option;
+      $tsting-color: #a78e03;
+      background: #{$tsting-color};
+      box-shadow: 3px 0 $tsting-color, -3px 0 $tsting-color,
+        0 -3px $tsting-color, 0 3px $tsting-color, 6px 0 black, -6px 0 black,
+        0 -6px black, 0 6px black, 0 0 0 3px black;
+    }
+
+    &-icon {
+      transform: translate(-1px, -3px);
+    }
+
+    &-cart {
+      @include shop-option;
+      border: none;
+      padding: 10px;
+    }
+
+    &-text {
+      @include press-start;
+      @include no-select;
+      text-align: left;
+      font-size: 0.6em;
+      padding-top: 10px;
+      @media #{$smartphones} {
+        padding-top: 0;
+        margin: 0;
+        font-size: 0.55em;
+        line-height: 2.6em;
+        text-align: center;
+      }
+    }
+
+    &-active {
+      opacity: 1;
+
+      > .shop-option-text {
+        text-shadow: 0 0 20px #fff, 0 0 20px #ffffff, 0 0 20px #ffffff;
+      }
+    }
+  }
+
+  &-items {
+    &-container {
+      padding: 40px;
+      height: 470px;
+      display: flex;
+      flex-direction: column;
+      @media #{$smartphones} {
+        height: 100%;
+        padding: 0;
+      }
+    }
+
+    &-progress {
+      flex: 0.6;
+      @include centered-flex;
+      flex-direction: column;
+    }
+
+    &-message {
+      margin: 0;
+      font-family: press-start;
+      margin-bottom: 5px;
+    }
+
+    &-item {
+      height: 220px;
+      //flex: 4;
+      @include centered-flex;
+      align-items: stretch;
+      flex-direction: column;
+      //margin: 0 80px;
+
+      @media #{$smartphones} {
+        display: none;
+      }
+
+      &-mobile {
+        display: none;
+        @media #{$smartphones} {
+          display: inherit;
+          flex: 2;
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    &-options {
+      flex: 1;
+      @include centered-flex;
+      flex-direction: column;
+      @media #{$smartphones} {
+        margin-bottom: 10vh;
+      }
+
+      &-top {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media #{$smartphones} {
+          margin: 5px 0;
+          flex: none;
+        }
+      }
+
+      &-middle {
+        flex: 1;
+        width: auto;
+        min-height: 36px;
+        @media #{$smartphones} {
+          margin: 5px 0;
+          flex: none;
+        }
+      }
+
+      &-bottom {
+        flex: 1;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        @media #{$smartphones} {
+          margin: 10px 0;
+          flex: none;
+        }
+      }
+    }
+
+    &-arrow {
+      @include press-start;
+      font-size: 2em;
+      cursor: pointer;
+      @include no-select;
+      flex: 1;
+      margin: 0;
+      padding: 30px 0px;
+      @media #{$smartphones} {
+        flex: 0.5;
+        padding: 10px 0px;
+      }
+    }
+  }
+
+  &-item {
+    &-image {
+      max-height: 100%;
+      width: auto;
+      @include no-select;
+    }
+
+    &-option {
+      flex: 1;
+      @include press-start;
+      font-size: 0.8em;
+      line-height: 2.1em;
+      margin: 0;
+    }
+  }
+
+  &-progress-text {
+    @include press-start;
+  }
+
+  &-size {
+    &-wrapper {
+      display: flex;
+      border: 1px solid white;
+      border-radius: 4px;
+      padding: 4px 10px;
+    }
+
+    &-option {
+      cursor: pointer;
+      display: inline-block;
+      margin: 0;
+      @include no-select;
+
+      &-disabled {
+        color: #696969;
+        cursor: auto;
+      }
+    }
+
+    &-button {
+      cursor: pointer;
+      display: inline-block;
+      min-width: 50px;
+      margin: 0;
+      @include no-select;
+    }
+  }
+
+  &-cart {
+    &-container {
+      position: relative;
+      height: 0;
+      width: 0;
+      margin-left: calc(100% + 80px);
+      top: -40px;
+      left: -40px;
+    }
+
+    &-image {
+      width: 50px;
+      height: auto;
+      cursor: pointer;
+      margin: auto;
+      transform: translateY(-15%);
+      @media #{$smartphones} {
+        position: absolute;
+        top: 0;
+        transform: translateX(-100%);
+        left: 100vw;
+        padding: 20px;
+      }
+    }
+  }
+
+  &-buy-button {
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 50px;
+    @include no-select;
+
+    &-disabled {
+      border: 1px solid #696969;
+      color: #696969;
+      cursor: inherit;
+      pointer-events: none;
+    }
+  }
+
+  &-glitch {
+    position: relative;
+
+    &:after {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      text-shadow: -1px 0 red;
+      top: 0;
+      color: white;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: noise-anim 0.6s infinite linear alternate-reverse;
+      white-space: nowrap;
+    }
+
+    &:before {
+      content: attr(data-text);
+      position: absolute;
+      left: -2px;
+      text-shadow: 1px 0 blue;
+      top: 0;
+      color: white;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: noise-anim-2 0.4s infinite linear alternate-reverse;
+      white-space: nowrap;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+// first line comment to compile
+/*
+      _  ____      ____   ______  ________
+     / \|_  _|    |_  _|.' ___  ||_   __  |
+    / _ \ \ \  /\  / / / .'   \_|  | |_ \_|
+   / ___ \ \ \/  \/ /  | |   ____  |  _| _
+ _/ /   \ \_\  /\  /   \ `.___]  |_| |__/ |
+|____| |____|\/  \/     `._____.'|________|
+*/
+
+$dark-grey-desktop: #A29F9F;
+$light-grey-desktop: #E6E2E2;
+$navbar-grey-desktop: #D4CDCD;
+$home-accent-desktop: #7D7D7D;
+$dark-grey-mobile: #E6E2E2;
+$light-grey-mobile: #D8D8D8;
+$screen-background: #121010;
+$contact-dark-grey: #9B9B9B;
+$contact-light-grey: #D7D6D6;
+$contact-button-grey: #CECBCB;
+$contact-second-grey: #DDDDDD;
+$contact-send-grey: #545454;
+$mobile-breakpoint: 320px;
+$ease-out-quint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$smartphones: "screen and (max-width: 480px) and (orientation: portrait), screen and (max-height: 480px) and (orientation: landscape)";
+
+@font-face {
+    font-family: 'varsity';
+    src: url('https://dwvo2npct47gg.cloudfront.net/fonts/varsity.ttf');
+}
+
+@font-face {
+    font-family: 'press-start';
+    src: url('../awge-media/fonts/press-start.ttf');
+}
+
+@import 'partials/mixins.scss';
+@import 'partials/animations.scss';
+@import 'partials/global.scss';
+
+@import 'partials/about.scss';
+@import 'partials/cart.scss';
+@import 'partials/contact.scss';
+@import 'partials/home.scss';
+@import 'partials/landing.scss';
+@import 'partials/media.scss';
+@import 'partials/modal.scss';
+@import 'partials/model.scss';
+@import 'partials/shop.scss';
+@import 'partials/terms.scss';

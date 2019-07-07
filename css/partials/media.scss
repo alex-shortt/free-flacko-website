@@ -1,0 +1,305 @@
+$shimmer-color1: #29a806;
+$shimmer-color2: white;
+
+.shimmer {
+    &-text-effect {
+        overflow: hidden;
+        position: relative;
+        filter: contrast(110%) brightness(190%);
+        @media #{$smartphones} {
+            align-self: center;
+        }
+    }
+
+    &-neon {
+        position: relative;
+        background: black;
+        color: transparent;
+        margin: 0;
+        font-size: 3.6em;
+        font-family: press-start;
+
+        &:after,
+        &:before {
+            content: attr(data-text);
+            color: white;
+            filter: blur(0.02em);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        &:after {
+            mix-blend-mode: difference;
+        }
+        @media #{$smartphones} {
+            font-size: 2.45em;
+        }
+    }
+
+    &-gradient,
+    &-spotlight {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    &-gradient {
+        background: linear-gradient(45deg, $shimmer-color1, $shimmer-color2);
+        mix-blend-mode: multiply;
+    }
+
+    &-spotlight {
+        animation: light 5s infinite linear;
+        background: #{"radial-gradient(circle, #ffffff, rgba(0, 0, 0, 0) 25%) 0 0/25% 25%, radial-gradient(circle, #ffffff, #000000 25%) 50% 50%/12.5% 12.5%"};
+        top: -100%;
+        left: -100%;
+        mix-blend-mode: color-dodge;
+    }
+}
+
+.videos {
+    &-content {
+        background: black;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+        overflow-y: auto;
+        @media #{$smartphones} {
+            height: calc(100% - 60px);
+        }
+    }
+
+    &-title-container {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 2.5%;
+        flex: 0.7;
+        margin-top: 10vh;
+        @media #{$smartphones} {
+            padding-bottom: 0;
+            margin-top: 5vh;
+        }
+    }
+
+    &-listing {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        @media #{$smartphones} {
+            display: block;
+        }
+
+        &:last-child {
+            margin-bottom: 20vh;
+        }
+
+        &-preview {
+            border: 2px solid rgba(41, 168, 6, 0.7);
+            overflow: hidden;
+            opacity: 0.95;
+            width: 30vw;
+            cursor: pointer;
+            @media #{$smartphones} {
+                width: calc(100% - 26px);
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        &-info {
+            margin: 35px;
+            font-family: press-start;
+            text-shadow: 0 2px 1px rgba(64, 255, 220, 0.8);
+            color: #29a806;
+            width: 30%;
+            @media #{$smartphones} {
+                width: auto;
+                margin: 15px;
+            }
+
+            & > h1 {
+                @media #{$smartphones} {
+                    font-size: 1.2em;
+                }
+            }
+
+            & > h4 {
+                line-height: 200%;
+                @media #{$smartphones} {
+                    font-size: 0.9em;
+                }
+            }
+        }
+    }
+
+    &-fullscreen {
+        &-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            cursor: pointer;
+            z-index: 3;
+            background: black;
+        }
+
+        &-video {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+}
+
+.pictures {
+    &-content {
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    &-container {
+        width: 35vw;
+        margin: 10vh auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &-max-container {
+        width: 50vw !important;
+    }
+
+    &-image {
+        height: auto;
+        width: 100%;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+}
+
+.dvd {
+    &-container {
+        width: 100%;
+        height: 100%;
+        @media #{$smartphones} {
+            height: calc(100% - 60px);
+        }
+    }
+
+    &-video {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    &-share {
+        position: absolute;
+        cursor: pointer;
+        transform: translateX(-50%);
+        top: calc(10vh + 80px);
+        left: calc(10vw + 40px);
+        color: #79d50f !important;
+        background: black;
+        font-size: 1.5em !important;
+        border: 4px #4c4c4c solid;
+        border-radius: 10px;
+        padding: 10px 15px;
+        @media #{$smartphones} {
+            top: 70px;
+            left: 10px;
+            transform: translateX(0);
+        }
+    }
+
+    &-controls {
+        position: fixed;
+        left: 0;
+        bottom: 12%;
+        height: 100px;
+        width: 100%;
+        background-color: transparent;
+        opacity: 1;
+        transition: opacity 1.25s;
+    }
+
+    &-seek {
+        @include centered-flex;
+        flex-direction: row;
+
+        &-bar {
+            width: 50%;
+            background: transparent;
+        }
+    }
+
+    &-button {
+        border: #4a4a4a solid;
+        background: #000000;
+        -webkit-border-radius: 35;
+        -moz-border-radius: 35;
+        border-radius: 35px;
+        font-family: Arial;
+        color: #79d430;
+        font-size: 20px;
+        padding: 10px 20px;
+        text-decoration: none;
+
+        &:hover {
+            background: #4a4a4a;
+            border: #000000 solid;
+            text-decoration: none;
+        }
+    }
+
+    &-time {
+        margin: 0 5px;
+    }
+}
+
+.share-modal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.video-js {
+    @media #{$smartphones} {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+
+    .vjs-tech {
+        position: static !important;
+        max-height: 100%;
+    }
+}
+
+.vjs-control-bar {
+    bottom: 13% !important;
+    width: 60% !important;
+    left: 20% !important;
+    @media #{$smartphones} {
+        bottom: 0 !important;
+        width: 100% !important;
+        left: 0 !important;
+    }
+}
+
+.vjs-big-play-button {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}

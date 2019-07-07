@@ -1,0 +1,52 @@
+.model {
+    &-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: -1;
+        background-image: url("https://dwvo2npct47gg.cloudfront.net/gifs/testing-3.gif");
+        background-size: cover;
+        @media #{$smartphones} {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+    }
+
+    &-modal {
+        background: transparent;
+        box-shadow: none;
+        @include no-select;
+        pointer-events: none !important;
+    }
+
+    &-close {
+        @include absolute-center(25vh, 35vw);
+        font-size: 2em;
+    }
+
+    &-loading {
+        @include no-select;
+        @include absolute-center(50vh, 50vw);
+        @include press-start;
+        pointer-events: none;
+        font-size: 1.75em;
+        opacity: 0;
+    }
+
+    &-price {
+        @include no-select;
+        @include absolute-center(75vh, 50vw);
+        @include press-start;
+        pointer-events: none;
+        font-size: 1.5em;
+    }
+
+    &-copyright {
+        @include no-select;
+        @include absolute-center(80vh, 50vw);
+        pointer-events: none;
+    }
+}

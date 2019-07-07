@@ -1,0 +1,300 @@
+@mixin home-options-children {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+@mixin home-offset {
+    position: relative;
+    width: 0;
+    height: 0;
+}
+
+.home {
+    &-content {
+        background-image: url("https://dwvo2npct47gg.cloudfront.net/gifs/home-background-2.gif");
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        @media #{$smartphones} {
+            display: none;
+        }
+
+        &-mobile {
+            display: none;
+            @media #{$smartphones} {
+                display: block;
+                height: 100%;
+                width: 100%;
+                background: #dbdbdb;
+            }
+        }
+    }
+
+    &-container {
+        margin: auto;
+        background: $light-grey-desktop;
+        width: 55vw;
+        height: 57vh;
+        border: 2px solid black;
+        border-radius: 7px;
+        min-height: 300px;
+        min-width: 465px;
+
+        &-mobile {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 60px);
+        }
+    }
+
+    &-video {
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+
+        &-container {
+            @include home-offset;
+            margin-left: 100%;
+
+            &-fullscreen {
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin-left: 0;
+            }
+        }
+
+        &-wrapper {
+            position: absolute;
+            z-index: 2;
+            top: 10vh;
+            left: -7.2vw;
+
+            &-fullscreen {
+                background: black;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        &-parent {
+            border-radius: 4px;
+            height: 25vh;
+            width: 325px; //auto
+            transform: translateX(-50%) translateY(-50%);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.46);
+            background: black;
+            overflow: hidden;
+            min-height: 130px;
+            @media #{$smartphones} {
+                transform: none;
+            }
+        }
+
+        &-gif {
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            top: 0;
+            width: 60%;
+            height: auto;
+            cursor: pointer;
+
+            &-mobile {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        &-text {
+            @include press-start;
+            @include no-select;
+            position: absolute;
+            z-index: 2;
+            font-size: 0.9em;
+            top: 44px;
+            right: 33px;
+            cursor: pointer;
+            @media #{$smartphones} {
+                right: 0;
+                top: 50%;
+                padding-bottom: 7px;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                display: inline-table;
+            }
+        }
+
+        &-ipad-mobile {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            height: 170px;
+            width: 210px;
+        }
+
+        &-wrapper-mobile {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            overflow: hidden;
+            border-radius: 5px;
+            transform: translateX(-50%) translateY(-50%) translateY(-7px);
+            height: 124px;
+            width: 180px;
+        }
+    }
+
+    &-navbar {
+        background: #D4CDCD;
+        border: 3px solid #979797;
+        text-align: left;
+        color: black;
+        position: relative;
+        top: -4px;
+        border-radius: 4px;
+        padding: 7px 0 7px 5%;
+
+        &-mobile {
+            display: none;
+            @media #{$smartphones} {
+                display: block;
+                top: inherit;
+                border-radius: 0;
+                border: none;
+                box-shadow: 0 4px 4px 1px rgba(31, 30, 30, 0.7);
+                text-align: center;
+                padding: 13px 0;
+            }
+            img {
+                height: 35px;
+            }
+        }
+
+        &-text {
+            @include press-start;
+            font-size: 2.5em;
+            margin: 0;
+            @media #{$smartphones} {
+                text-align: center;
+            }
+        }
+    }
+
+    &-section {
+        &-video-mobile {
+            flex: 1;
+            position: relative;
+        }
+
+        &-button-mobile {
+            flex: 0.5;
+            @include centered-flex;
+            align-items: flex-end;
+        }
+
+        &-button-row-mobile {
+            flex: 1;
+        }
+
+        &-copyright-mobile {
+            @include centered-flex;
+            flex: 0.45;
+        }
+    }
+
+    &-options {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &-container {
+            display: flex;
+            height: calc(100% - 66px);
+            position: relative;
+        }
+
+        &-row {
+            display: flex;
+            flex: 1;
+        }
+
+        &-wrapper {
+            @include no-select;
+            cursor: pointer;
+            @media #{$smartphones} {
+                display: inline-block;
+            }
+        }
+
+        &-item {
+            flex: 1;
+            @include centered-flex;
+        }
+
+        &-forums-mobile {
+            height: 0;
+
+            &-button {
+                transform: translateY(-20%);
+            }
+        }
+
+        &-icon {
+            max-height: 80px;
+            max-width: 120px;
+            cursor: pointer;
+            @media #{$smartphones} {
+                max-height: 8.6vh;
+                max-width: 32vw;
+            }
+
+            &-image {
+                @media #{$smartphones} {
+                    max-height: 11.1vh;
+                    margin-bottom: -5px;
+                }
+            }
+        }
+
+        &-text {
+            @include press-start;
+            text-shadow: 1px 2px 0 rgba(82, 80, 80, 0.5);
+            cursor: pointer;
+
+            @media #{$smartphones} {
+                font-size: 0.9em;
+            }
+
+            &-red {
+                color: #FE3824;
+            }
+
+            &-black {
+                color: #21201e;
+            }
+
+            &-yellow {
+                color: #DFBD02;
+            }
+
+            &-blue {
+                color: #39620A;
+            }
+
+            &-green {
+                color: #20344A;
+            }
+
+            &-forum {
+                color: #eb6917;
+            }
+        }
+    }
+}

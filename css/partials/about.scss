@@ -1,0 +1,207 @@
+.about {
+  &-content {
+    display: flex;
+    flex-direction: column;
+    background: black;
+    width: 100%;
+    height: 100%;
+    @media #{$smartphones} {
+      display: none;
+    }
+
+    &-mobile {
+      width: 100%;
+      height: 100%;
+      display: none;
+      @media #{$smartphones} {
+        display: block;
+      }
+    }
+  }
+
+  &-background {
+    background-size: cover;
+    //background-position-x: -190px;
+    width: 100vw;
+    height: 100vh;
+    @media #{$smartphones} {
+      background-position-x: -400px;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &-blurred-border {
+    width: 39vw;
+    height: 40vh;
+    //border: 15px solid green;
+    border-radius: 15px;
+    filter: blur(5px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  &-third {
+    &-title-mobile {
+      flex: 1;
+      @include centered-flex;
+    }
+
+    &-text-mobile {
+      @include centered-flex;
+      background: rgba(146,146,146,0.72);
+      padding: 10px 0;
+    }
+
+    &-copyright-mobile {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+
+  &-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: rgba(146, 146, 146, 0.72);
+    border-radius: 15px;
+    padding: 15px;
+    @media (max-height: 640px) {
+      transform: translateX(-50%) translateY(-50%) scale(0.7);
+    }
+
+    &-fixed {
+      width: 500px;
+    }
+
+    &-mobile {
+      height: calc(100% - 60px);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &-navbar {
+    padding: 10px 0;
+    margin-bottom: 5%;
+
+    &-text {
+      font-family: press-start;
+      font-weight: normal;
+      color: white;
+      font-size: 2em;
+      margin: 0;
+      @media #{$smartphones} {
+        font-size: 1.5em;
+        background: rgba(146,146,146,0.72);
+        padding: 10px;
+        width: 100%;
+      }
+    }
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1%;
+
+    &-text {
+      @include press-start;
+      margin: 0;
+      line-height: 1.75em;
+      font-size: 0.9em;
+      text-align: center;
+      max-height: 45vh;
+      overflow-y: auto;
+      border: 1px solid white;
+      padding: 5px;
+      border-radius: 5px;
+      @media #{$smartphones} {
+        padding: 5px 0;
+        font-size: 0.9em;
+        max-height: 60vh;
+        border: none;
+      }
+
+      br {
+        display: block;
+        content: " ";
+        margin-top: 5px;
+      }
+    }
+  }
+
+  &-artists {
+    background-image: url("https://dwvo2npct47gg.cloudfront.net/gifs/about-background-combine.gif");
+    background-position: center;
+
+    &-artist {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &-people {
+    background-image: url("https://dwvo2npct47gg.cloudfront.net/gifs/awge-city.gif");
+    background-position: center;
+  }
+
+  &-artist {
+    background-position: center;
+    filter: brightness(1.1);
+
+    &-content {
+      @media #{$smartphones} {
+        display: initial;
+      }
+    }
+
+    &-info {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+    }
+
+    &-container {
+      padding: 10px;
+      @media #{$smartphones} {
+        width: 100%;
+      }
+    }
+
+    &-navbar-text {
+      margin-bottom: 25px;
+      @media #{$smartphones} {
+        background: none;
+      }
+    }
+
+    &-image {
+      border-radius: 15px;
+      filter: brightness(0.5);
+      width: 50vw;
+      height: 50vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      @media #{$smartphones} {
+        width: 100%;
+        border-radius: 0;
+      }
+    }
+  }
+}

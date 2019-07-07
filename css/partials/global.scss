@@ -1,0 +1,227 @@
+$stars: multiple-box-shadow(100);
+
+.animate-turn-off {
+  animation: turn-off 0.55s $ease-out-quint;
+}
+
+.animate-turn-on {
+  animation: turn-on 3s linear;
+}
+
+.animate-overlay-on {
+  animation: overlay-anim 5s linear;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  //cursor: url('https://dwvo2npct47gg.cloudfront.net/images/cursor.png') 11 32, auto;
+}
+
+#green {
+  color: #39620a;
+}
+
+#yellow {
+  color: #f4eb75;
+}
+
+#red {
+  color: #f45555;
+}
+
+#blue {
+  color: #395cc9;
+}
+
+.awge {
+  &-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-tube {
+    &-border {
+      width: 100%;
+      height: 100%;
+      background-image: url("https://dwvo2npct47gg.cloudfront.net/images/border-stretched-2.png");
+      background-size: 100% 100%;
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      @media #{$smartphones} {
+        display: none;
+        height: 100%;
+        width: 100%;
+      }
+
+      &-mobile {
+        @media #{$smartphones} {
+          display: inherit;
+          background-image: url("https://dwvo2npct47gg.cloudfront.net/images/border-compressed-2.png");
+        }
+      }
+    }
+
+    &-shape {
+      background: black;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      //filter: contrast(140%);
+      &::after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(18, 16, 16, 0.1);
+        opacity: 0;
+        z-index: 7;
+        pointer-events: none;
+        animation: flicker 0.15s infinite;
+      }
+      // scanlines
+      &::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 0.06),
+            rgba(0, 255, 0, 0.02),
+            rgba(0, 0, 255, 0.06)
+          );
+        z-index: 7;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &-copyright {
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    @media #{$smartphones} {
+      bottom: 5px;
+    }
+
+    &-text {
+      @include press-start;
+      font-size: 0.7em;
+      line-height: 1.5em;
+      width: 100vw;
+      margin: 0;
+      @media #{$smartphones} {
+        line-height: 1.2em;
+        font-size: 0.6em;
+      }
+    }
+  }
+
+  &-stars {
+    box-shadow: $stars;
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    animation: animStar 120s linear infinite;
+    /*
+        filter: blur(1px);
+        -webkit-transform: translateZ(0);
+        -webkit-perspective: 1000;
+        -webkit-backface-visibility: hidden;
+        */
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 2000px;
+      width: 3px;
+      height: 3px;
+      box-shadow: $stars;
+      background: transparent;
+    }
+  }
+
+  &-space {
+    &-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    &-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    &-option {
+      font-family: press-start;
+      font-weight: normal;
+      cursor: pointer;
+      @include no-select;
+    }
+
+    &-header {
+      font-family: press-start;
+      font-weight: normal;
+      @include no-select;
+    }
+
+    &-text {
+      font-family: press-start;
+      font-weight: normal;
+      line-height: 1.4em;
+      @include no-select;
+    }
+  }
+
+  &-home {
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 2;
+
+    & > img {
+      width: 100%;
+      height: auto;
+    }
+    @media #{$smartphones} {
+      display: none;
+    }
+  }
+
+  &-tc {
+    cursor: pointer;
+
+    &:hover {
+      color: #d8d8d8;
+    }
+  }
+}
+
+#awge-back {
+  @media #{$smartphones} {
+    display: initial !important;
+  }
+}

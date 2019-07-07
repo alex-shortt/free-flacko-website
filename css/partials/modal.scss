@@ -1,0 +1,126 @@
+.modal {
+    &-open {
+        @include press-start;
+        @include no-select;
+        cursor: pointer;
+    }
+
+    &-overlay {
+        @include centered-flex;
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.55);
+        opacity: 0;
+        pointer-events: none;
+        overflow-y: auto;
+        z-index: 2;
+        transition: opacity 0.35s ease-in-out;
+
+        &.modal-opened {
+            opacity: 1;
+            pointer-events: inherit;
+        }
+        @media #{$smartphones} {
+            height: 100%;
+        }
+    }
+
+    &-modal {
+        background: #1b1b1b;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+        text-align: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.35s ease-in-out;
+        max-height: 100vh;
+        overflow-y: auto;
+        border-radius: 8px;
+        width: 500px;
+        height: 500px;
+
+        &.modal-opened {
+            opacity: 1;
+            pointer-events: inherit;
+
+            .modal-content {
+                opacity: 1;
+            }
+        }
+        @media #{$smartphones} {
+            width: calc(100vw - 40px);
+            height: calc(100% - 40px);
+        }
+    }
+
+    &-content {
+        padding: 20px 0;
+        opacity: 0;
+        transition: 0.35s ease-in-out;
+        @include centered-flex;
+        height: calc(100% - 56px);
+        flex-direction: column;
+    }
+
+    &-close {
+        @include press-start;
+        @include no-select;
+        cursor: pointer;
+        margin: 0;
+        text-align: left;
+        font-size: 1em;
+    }
+
+    &-title {
+        @include press-start;
+        font-size: 1.4em;
+    }
+
+    &-footer {
+        @include press-start;
+        @include no-select;
+        cursor: pointer;
+        font-size: 1em;
+        margin-bottom: 0;
+    }
+
+    &-items-container {
+        width: 100%;
+        flex-grow: 1;
+        overflow-y: auto;
+
+        & > canvas {
+            width: 100%;
+            height: 392px;
+        }
+    }
+}
+
+.notify {
+    &-modal {
+        padding: 20px 60px;
+        min-width: 300px;
+        max-width: 500px;
+        width: auto;
+        height: auto;
+        @media #{$smartphones} {
+            width: calc(100vw - 40px);
+        }
+    }
+
+    &-message {
+        @include press-start;
+        font-size: 1.4em;
+        line-height: 1.4em;
+    }
+
+    &-confirm {
+        @include press-start;
+        @include no-select;
+        cursor: pointer;
+    }
+}
