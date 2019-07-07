@@ -389,10 +389,12 @@ Pagation.js
 http://patorjk.com/software/taag/#p=display&f=Varsity&t=Pagation
 */
 
-function autoGlitch(){
-  noise.go()
-  setTimeout(function() { noise.pause() }, Math.random() * 300 + 400)
-  setTimeout(autoGlitch, Math.random() * 2000 + 3000)
+function autoGlitch() {
+  if(noise) noise.go();
+  setTimeout(function() {
+    if(noise) noise.pause();
+  }, Math.random() * 300 + 400);
+  setTimeout(autoGlitch, Math.random() * 2000 + 3000);
 }
 
 function shopLoad() {
@@ -423,12 +425,13 @@ function shopLoad() {
   });
 
   $(".shop-items-item").click(function() {
-    console.log("asdf")
-    noise.go();
-    setTimeout(function() { noise.pause() }, 750);
+    if(noise) noise.go();
+    setTimeout(function() {
+      if(noise) noise.pause();
+    }, 750);
   });
 
-  setTimeout(autoGlitch, 2000)
+  setTimeout(autoGlitch, 2000);
 
   var img = new Image();
   img.onload = function() {
@@ -829,28 +832,45 @@ http://patorjk.com/software/taag/#p=display&f=Varsity&t=Checkout%0A
 function openCheckoutLink() {
   var cart = getCart();
 
-  shopClient.checkout.create().then(function(checkout) {
-    var lineItems = [];
-    for (var i = 0; i < Object.keys(cart).length; i++) {
-      var id = Object.keys(cart)[i];
-      var variant = skuMatch[id];
-      lineItems.push({
-        variantId: variant.id,
-        quantity: cart[id]
-      });
-    }
-    shopClient.checkout
-      .addLineItems(checkout.id, lineItems)
-      .then(function(finalCheckout) {
-        console.log("checkout");
-        console.log(finalCheckout);
+  var checkoutItems = [];
+  for (var i = 0; i < Object.keys(cart).length; i++) {
+    var id = Object.keys(cart)[i];
+    var variant = skuMatch[id];
+    checkoutItems.push({
+      variantId: variant.id,
+      quantity: cart[id]
+    });
+  }
 
-        localStorage["cart"] = "dicks";
-        refreshCart();
+  var lineItems = { lineItems: checkoutItems };
+  lineItems = JSON.stringify(lineItems);
+  lineItems = lineItems.replace(/\"([^(\")"]+)\":/g, "$1:");
+  console.log(lineItems);
 
-        window.location = finalCheckout.webUrl;
-      });
-  });
+  fetch("https://awge-2018.myshopify.com/api/2019-07/graphql.json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/graphql",
+      "X-Shopify-Storefront-Access-Token": "c93be35bf35584f666b857f0747fa13d"
+    },
+    body:
+      "mutation checkoutCreate { \
+          checkoutCreate(input: " +
+      lineItems +
+      ") { \
+              checkout { \
+                webUrl \
+              } \
+          } \
+       }"
+  })
+    .then(function(r) {
+      return r.json();
+    })
+    .then(function(data) {
+      console.log("data", data);
+      window.location = data.data.checkoutCreate.checkout.webUrl;
+    });
 }
 
 function getCartSubtotal() {
@@ -898,6 +918,7 @@ function initShopify() {
     body:
       '{ productByHandle(handle: "free-rocky-tee") { \
                 variants(first: 10) { edges { node { \
+                  id \
                   title \
                   sku \
                   price \
@@ -913,8 +934,8 @@ function initShopify() {
       var product = data.data.productByHandle;
       var variants = product.variants.edges;
       for (var x = 0; x < variants.length; x++) {
-        if (variants[x].node.availableForSale || x == 2) {
-          skuMatch[variants[x].node.sku] = "notnull";
+        if (variants[x].node.availableForSale) {
+          skuMatch[variants[x].node.sku] = variants[x].node;
         }
       }
       console.log(skuMatch);
