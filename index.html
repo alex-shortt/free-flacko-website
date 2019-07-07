@@ -22,7 +22,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js" type="text/javascript"></script>
 
   <!--Local Scripts-->
-  <script src="scripts/assets.min.js" type="text/javascript"></script>
   <script src="scripts/definitions.js" type="text/javascript"></script>
   <script src="scripts/main.min.js" type="text/javascript"></script>
 
@@ -114,15 +113,6 @@
 
     </div>
     <div class="modal-overlay">
-      <div id="model-container" class="model-container modal-items-container"></div>
-      <h2 id="model-close" class='modal-close model-close' data-modal="#model-modal"><span>X</span></h2>
-      <div class='modal-modal model-modal' id='model-modal'>
-        <div id="model-loading" class="model-loading">Loading...</div>
-        <div id="model-price" class="model-price">...</div>
-        <h4 class="model-copyright awge-copyright-text">&#169;&nbsp;&nbsp;2019&nbsp;&nbsp;AWGE</h4>
-      </div>
-    </div>
-    <div class="modal-overlay">
       <div class='modal-modal' id='cart-modal'>
         <div class='modal-content'>
           <h1 class="cart-close"><span id="cancel-order" class="modal-close" data-modal="#cart-modal">X</span></h1>
@@ -133,40 +123,10 @@
         </div>
       </div>
     </div>
-    <div class="modal-overlay">
-      <div class='modal-modal notify-modal' id='notify-modal'>
-        <h1 id="notify-message" class='notify-message'>...</h1>
-        <br>
-        <h3><span class="notify-confirm modal-close" data-modal="#notify-modal">OK</span></h3>
-      </div>
-    </div>
-    <div class="modal-overlay">
-      <div class='modal-modal notify-modal' id='share-modal'>
-        <div class="share-modal-container a2a_kit a2a_kit_size_32 a2a_default_style">
-          <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-          <a class="a2a_button_facebook"></a>
-          <a class="a2a_button_twitter"></a>
-          <a class="a2a_button_tumblr"></a>
-          <a class="a2a_button_google_plus"></a>
-          <a class="a2a_button_reddit"></a>
-        </div>
-        <script async src="https://static.addtoany.com/menu/page.js"></script>
-        <h3><span class="notify-confirm modal-close" data-modal="#share-modal">CLOSE</span></h3>
-      </div>
-    </div>
-    <div class="modal-overlay">
-      <div class='modal-modal pictures-modal' id='pictures-modal'>
-        <img id='pictures-modal-image' data-modal="#pictures-modal" class="pictures-modal-image modal-close" src="" />
-      </div>
-    </div>
     <div id="awge-overlay" class="awge-overlay"></div>
   </div>
 
   <script>
-    $("#model-container").ready(function() {
-      initModel($("#model-container"));
-      animateModel();
-    });
     initModal();
     initShopify();
     refreshCart();
