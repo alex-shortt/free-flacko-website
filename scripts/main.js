@@ -1,13 +1,13 @@
 var shop = {
   1: {
-    name: "Free Flacko Tee<br/>ALL Sales Final",
+    name:
+      "10 Days for Shipping<br/>Portion of Proceeds go to ALCU<br/>ALL Sales Final",
     filename: "free-rocky",
     price: "50",
     baseSKU: "IGEN-SS-BLK",
     sizes: ["SM", "MD", "LG", "XL"]
   }
 };
-
 
 /*
  ____    ____          _
@@ -208,6 +208,8 @@ function initImageGlitch() {
     auto: false,
     delay: 7000
   };
+
+  printCredits();
 }
 
 function initModal() {
@@ -353,24 +355,28 @@ function initTerms() {
 }
 
 function printCredits() {
-  // console.log("                                                        \
-  //         \n      _  ____      ____   ______  ________                 \
-  //         \n     / \\|_  _|    |_  _|.' ___  ||_   __  |               \
-  //         \n    / _ \\ \\ \\  /\\  / / / .'   \\_|  | |_ \\_|          \
-  //         \n   / ___ \\ \\ \\/  \\/ /  | |   ____  |  _| _             \
-  //         \n _/ /   \\ \\_\\  /\\  /   \\ `.___]  |_| |__/ |           \
-  //         \n|____| |____|\\/  \\/     `._____.'|________|              \
-  //         \n____________________________________________               \
-  //         \n____________________________________________               \
-  //         \n                                                           \
-  //         \nCreated by Ilya Zaidze and Alex Shortt                     \
-  //         \nAlex Shortt :: Developer                                   \
-  //         \n  >Twitter: @_alexshortt                                   \
-  //         \n  >Instagram: @alexander.shortt                            \
-  //         \nIlya Zaidze :: Creative + Design                           \
-  //         \n  >Twitter: @ilya2x                                        \
-  //         \n  >Instagram: @ilya2x                                      \
-  //         ");
+  console.log("                                                        \
+          \n      _  ____      ____   ______  ________                 \
+          \n     / \\|_  _|    |_  _|.' ___  ||_   __  |               \
+          \n    / _ \\ \\ \\  /\\  / / / .'   \\_|  | |_ \\_|          \
+          \n   / ___ \\ \\ \\/  \\/ /  | |   ____  |  _| _             \
+          \n _/ /   \\ \\_\\  /\\  /   \\ `.___]  |_| |__/ |           \
+          \n|____| |____|\\/  \\/     `._____.'|________|              \
+          \n____________________________________________               \
+          \n____________________________________________               \
+          \n                                                           \
+          \nCreated by Ilya Zaidze, Alex Shortt, Peter Campanelli      \
+          \nAlex Shortt :: Developer                                   \
+          \n  >Twitter: @_alexshortt                                   \
+          \n  >Instagram: @alexander.shortt                            \
+          \nPeter Campanelli :: Developer                              \
+          \n  >Twitter: @petercampanlli                                \
+          \n  >Instagram: @petercampanelli                             \
+          \nIlya Zaidze :: Creative + Design                           \
+          \n  >Twitter: @ilya2x                                        \
+          \n  >Instagram: @ilya2x                                      \
+          "
+  );
 }
 
 function isMobileView() {
@@ -401,9 +407,9 @@ http://patorjk.com/software/taag/#p=display&f=Varsity&t=Pagation
 */
 
 function autoGlitch() {
-  if(noise) noise.go();
+  if (noise) noise.go();
   setTimeout(function() {
-    if(noise) noise.pause();
+    if (noise) noise.pause();
   }, Math.random() * 300 + 400);
   setTimeout(autoGlitch, Math.random() * 3000 + 4000);
 }
@@ -436,9 +442,9 @@ function shopLoad() {
   });
 
   $(".shop-items-item").click(function() {
-    if(noise) noise.go();
+    if (noise) noise.go();
     setTimeout(function() {
-      if(noise) noise.pause();
+      if (noise) noise.pause();
     }, 750);
   });
 
@@ -471,7 +477,7 @@ function shopLoad() {
 }
 
 function resolveImgURL(name) {
-  return "https://dwvo2npct47gg.cloudfront.net/images/" + name + ".png";
+  return "https://dwvo2npct47gg.cloudfront.net/gifs/free-rocky.gif";
 }
 
 /*
