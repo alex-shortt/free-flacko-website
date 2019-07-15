@@ -1,7 +1,7 @@
 var shop = {
   1: {
     name:
-      "10 Days for Shipping<br/>Portion of Proceeds go to ALCU<br/>ALL Sales Final",
+      "10 Days for Shipping<br/>Portion donated to ACLU<br/>ALL Sales Final",
     filename: "free-rocky",
     price: "50",
     baseSKU: "IGEN-SS-BLK",
@@ -365,7 +365,9 @@ function printCredits() {
           \n____________________________________________               \
           \n____________________________________________               \
           \n                                                           \
-          \nCreated by Ilya Zaidze, Alex Shortt, Peter Campanelli      \
+          \n              #JUSTICEFORROCKY                             \
+          \n                                                           \
+          \nCreated by Ilya Zaidze, Alex Shortt,and  Peter Campanelli  \
           \nAlex Shortt :: Developer                                   \
           \n  >Twitter: @_alexshortt                                   \
           \n  >Instagram: @alexander.shortt                            \
@@ -477,7 +479,7 @@ function shopLoad() {
 }
 
 function resolveImgURL(name) {
-  return "https://dwvo2npct47gg.cloudfront.net/gifs/free-rocky.gif";
+  return "https://dwvo2npct47gg.cloudfront.net/gifs/justiceforrocky.gif";
 }
 
 /*

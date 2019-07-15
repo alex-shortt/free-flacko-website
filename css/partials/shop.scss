@@ -23,7 +23,7 @@
 .shop {
   &-content {
     background: black;
-    background-image: url("https://dwvo2npct47gg.cloudfront.net/gifs/justiceforrockybg.gif");
+    background-image: url("https://dwvo2npct47gg.cloudfront.net/gifs/freerocky-top.gif");
     background-position: center;
     //background-position-x: 300px; //360px
     display: flex;
@@ -190,6 +190,7 @@
         justify-content: center;
         align-items: center;
         @media #{$smartphones} {
+          font-size: 1em;
           margin: 5px 0;
           flex: none;
         }
