@@ -363,7 +363,7 @@ function printCredits() {
           \n                                                           \
           \n              #JUSTICEFORROCKY                             \
           \n                                                           \
-          \nCreated by Ilya Zaidze, Alex Shortt,and  Peter Campanelli  \
+          \nCreated by Ilya Zaidze, Alex Shortt, and Peter Campanelli  \
           \nAlex Shortt :: Developer                                   \
           \n  >Twitter: @_alexshortt                                   \
           \n  >Instagram: @alexander.shortt                            \
