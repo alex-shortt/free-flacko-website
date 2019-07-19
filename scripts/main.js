@@ -1,7 +1,6 @@
 var shop = {
   1: {
-    name:
-      "10 Days for Shipping<br/>Portion donated to ACLU<br/>ALL Sales Final",
+    name: "Justice for Rocky Tee",
     filename: "free-rocky",
     price: "50",
     baseSKU: "IGEN-SS-BLK",
@@ -28,8 +27,7 @@ function initImageGlitch() {
     opts = jQuery.extend({}, jQuery.fn.noisy.defs, opts);
     var instance = this;
 
-    var _pt = [
-      {
+    var _pt = [{
         x: 0,
         y: 0
       },
@@ -81,10 +79,8 @@ function initImageGlitch() {
           num *
           num;
         arr[i].css({
-          transform:
-            "translateZ(0) translate3d(0, 0, 0) translateX(" + _off + "px)",
-          webkitTransform:
-            "translateZ(0) translate3d(0, 0, 0) translateX(" + _off + "px)"
+          transform: "translateZ(0) translate3d(0, 0, 0) translateX(" + _off + "px)",
+          webkitTransform: "translateZ(0) translate3d(0, 0, 0) translateX(" + _off + "px)"
         });
       }
     };
@@ -377,8 +373,7 @@ function printCredits() {
           \nIlya Zaidze :: Creative + Design                           \
           \n  >Twitter: @ilya2x                                        \
           \n  >Instagram: @ilya2x                                      \
-          "
-  );
+          ");
 }
 
 function isMobileView() {
@@ -530,9 +525,9 @@ function setShopProduct(index) {
     $(message).html(shop[index].message);
     $(image).prop("src", resolveImgURL(shop[index].filename));
     $(name)
-      .html(shop[index].name)
-      .attr("data-text", shop[index].name)
-      .data(shop[index].name);
+      .html("Portion donated to the ACLU")
+      .attr("data-text", "Portion donated to the ACLU")
+      .data("Portion donated to the ACLU");
 
     currentItem.index = index;
     resetSizes();
@@ -567,8 +562,8 @@ function closeSizes(size) {
   } else {
     $(wrapper).append(
       '<h1 onclick="openSizes()" id="shop-size-final" class="shop-item-option shop-size-button">' +
-        size +
-        "</h1>"
+      size +
+      "</h1>"
     );
     currentItem.size = size;
   }
@@ -592,23 +587,22 @@ function openSizes() {
     if (isOutOfStock(baseSKU + "-" + size)) {
       $(wrapper).append(
         '<h1 class="shop-item-option shop-size-option shop-size-option-disabled">' +
-          size +
-          "</h1>"
+        size +
+        "</h1>"
       );
     } else {
       $(wrapper).append(
         "<h1 onclick=\"closeSizes('" +
-          size +
-          '\')" class="shop-item-option shop-size-option">' +
-          size +
-          "</h1>"
+        size +
+        '\')" class="shop-item-option shop-size-option">' +
+        size +
+        "</h1>"
       );
     }
   }
   $(container).css("width", $(container).width());
 
-  $(container).animate(
-    {
+  $(container).animate({
       width: "100%"
     },
     250
@@ -718,31 +712,31 @@ function refreshCart() {
 
     $(container).append(
       "<div id=" +
-        id +
-        ' class="cart-item"> \
+      id +
+      ' class="cart-item"> \
                         <div class="cart-item-delete-wrapper">\
                             <h1 class="cart-item-delete" onclick="removeFromCart(\'' +
-        id +
-        '\')">X</h1>\
+      id +
+      '\')">X</h1>\
                         </div>\
                         <div class="cart-item-image" style="background-image: url(\'' +
-        resolveImgURL(item.filename) +
-        '\')"></div>\
+      resolveImgURL(item.filename) +
+      '\')"></div>\
                         <div class="cart-item-name-wrapper">\
                             <h1 class="cart-item-name">' +
-        item.name +
-        (size == "OS" ? "" : " - SZ " + size) +
-        '</h1>\
+      item.name +
+      (size == "OS" ? "" : " - SZ " + size) +
+      '</h1>\
                         </div>\
                         <div class="cart-item-quantity-wrapper">\
                             <h1 class="cart-item-quantity">' +
-        cart[id] +
-        '</h1>\
+      cart[id] +
+      '</h1>\
                         </div>\
                         <div class="cart-item-price-wrapper">\
                             <h1 class="cart-item-price">$' +
-        parseFloat(item.price) * parseFloat(cart[id]) +
-        "</h1>\
+      parseFloat(item.price) * parseFloat(cart[id]) +
+      "</h1>\
                         </div>\
                     </div>"
     );
@@ -861,27 +855,28 @@ function openCheckoutLink() {
     });
   }
 
-  var lineItems = { lineItems: checkoutItems };
+  var lineItems = {
+    lineItems: checkoutItems
+  };
   lineItems = JSON.stringify(lineItems);
   lineItems = lineItems.replace(/\"([^(\")"]+)\":/g, "$1:");
 
   fetch("https://awge-2018.myshopify.com/api/2019-07/graphql.json", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/graphql",
-      "X-Shopify-Storefront-Access-Token": "c93be35bf35584f666b857f0747fa13d"
-    },
-    body:
-      "mutation checkoutCreate { \
+      method: "POST",
+      headers: {
+        "Content-Type": "application/graphql",
+        "X-Shopify-Storefront-Access-Token": "c93be35bf35584f666b857f0747fa13d"
+      },
+      body: "mutation checkoutCreate { \
           checkoutCreate(input: " +
-      lineItems +
-      ") { \
+        lineItems +
+        ") { \
               checkout { \
                 webUrl \
               } \
           } \
        }"
-  })
+    })
     .then(function(r) {
       return r.json();
     })
@@ -927,13 +922,12 @@ var skuMatch = {};
 
 function initShopify() {
   fetch("https://awge-2018.myshopify.com/api/2019-07/graphql.json", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/graphql",
-      "X-Shopify-Storefront-Access-Token": "c93be35bf35584f666b857f0747fa13d"
-    },
-    body:
-      '{ productByHandle(handle: "free-rocky-tee") { \
+      method: "POST",
+      headers: {
+        "Content-Type": "application/graphql",
+        "X-Shopify-Storefront-Access-Token": "c93be35bf35584f666b857f0747fa13d"
+      },
+      body: '{ productByHandle(handle: "free-rocky-tee") { \
                 variants(first: 10) { edges { node { \
                   id \
                   title \
@@ -942,7 +936,7 @@ function initShopify() {
                   availableForSale \
                 } } } \
             } }'
-  })
+    })
     .then(function(r) {
       return r.json();
     })
