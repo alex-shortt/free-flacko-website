@@ -1,8 +1,10 @@
+var desc = '15% of all Net Proceeds from sales will be donated to <a class="shop-items-item-link" href="https://www.amnesty.org">Amnesty International</a>';
+
 var shop = {
   1: {
     name: "Justice for Rocky Tee",
     filename: "free-rocky",
-    price: "50",
+    price: "99",
     baseSKU: "IGEN-SS-BLK",
     sizes: ["SM", "MD", "LG", "XL"]
   }
@@ -525,9 +527,9 @@ function setShopProduct(index) {
     $(message).html(shop[index].message);
     $(image).prop("src", resolveImgURL(shop[index].filename));
     $(name)
-      .html("Portion donated to the ACLU")
-      .attr("data-text", "Portion donated to the ACLU")
-      .data("Portion donated to the ACLU");
+      .html(desc)
+      .attr("data-text", desc)
+      .data(desc);
 
     currentItem.index = index;
     resetSizes();
