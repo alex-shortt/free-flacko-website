@@ -1,11 +1,11 @@
-var desc = '15% of all Net Proceeds from sales will be donated to <a class="shop-items-item-link" href="https://www.amnesty.org">Amnesty International</a>';
+var desc = '15% of Proceeds Donated to <a class="shop-items-item-link" href="https://www.amnesty.org">Amnesty International</a>';
 
 var shop = {
   1: {
     name: "Justice for Rocky Tee",
     filename: "free-rocky",
     price: "99",
-    baseSKU: "IGEN-SS-BLK",
+    baseSKU: "J4RT-SS",
     sizes: ["SM", "MD", "LG", "XL"]
   }
 };
@@ -863,11 +863,11 @@ function openCheckoutLink() {
   lineItems = JSON.stringify(lineItems);
   lineItems = lineItems.replace(/\"([^(\")"]+)\":/g, "$1:");
 
-  fetch("https://awge-2018.myshopify.com/api/2019-07/graphql.json", {
+  fetch("https://midnight-usa.myshopify.com/api/2019-07/graphql.json", {
       method: "POST",
       headers: {
         "Content-Type": "application/graphql",
-        "X-Shopify-Storefront-Access-Token": "c93be35bf35584f666b857f0747fa13d"
+        "X-Shopify-Storefront-Access-Token": "e948fca18da8203f92ea62021d7ca8d9"
       },
       body: "mutation checkoutCreate { \
           checkoutCreate(input: " +
@@ -923,13 +923,13 @@ var checkoutShipping, checkoutEmail, orderData, shopClient;
 var skuMatch = {};
 
 function initShopify() {
-  fetch("https://awge-2018.myshopify.com/api/2019-07/graphql.json", {
+  fetch("https://midnight-usa.myshopify.com/api/2019-07/graphql.json", {
       method: "POST",
       headers: {
         "Content-Type": "application/graphql",
-        "X-Shopify-Storefront-Access-Token": "c93be35bf35584f666b857f0747fa13d"
+        "X-Shopify-Storefront-Access-Token": "e948fca18da8203f92ea62021d7ca8d9"
       },
-      body: '{ productByHandle(handle: "free-rocky-tee") { \
+      body: '{ productByHandle(handle: "justice-for-rocky-tee") { \
                 variants(first: 10) { edges { node { \
                   id \
                   title \
