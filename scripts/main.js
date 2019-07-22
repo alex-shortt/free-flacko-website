@@ -4,7 +4,7 @@ var shop = {
   1: {
     name: "Justice for Rocky Tee",
     filename: "free-rocky",
-    price: "99",
+    price: "79",
     baseSKU: "J4RT-SS",
     sizes: ["SM", "MD", "LG", "XL"]
   }
