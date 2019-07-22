@@ -1,4 +1,4 @@
-var desc = '15% of Proceeds Donated to <a class="shop-items-item-link" href="https://www.amnesty.org">Amnesty International</a>';
+var desc = 'Portion of proceeds will be donated to <a class="shop-items-item-link" href="https://www.amnesty.org" target="_blank">Amnesty International</a> to help protect human rights for all people.';
 
 var shop = {
   1: {
