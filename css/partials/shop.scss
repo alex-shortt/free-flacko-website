@@ -256,7 +256,10 @@
     }
 
     &-name {
-      font-size: 0.5em;
+      font-size: 0.7em;
+      @media #{$smartphones} {
+        font-size: 0.5em;
+      }
     }
   }
 
