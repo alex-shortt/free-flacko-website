@@ -1,0 +1,25 @@
+RewriteEngine on
+
+#www redirect
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+#https redirect
+RewriteCond %{HTTPS} off
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#error redirect
+ErrorDocument 403 https://www.awgeshit.com/#error
+ErrorDocument 404 https://www.awgeshit.com/#error
+ErrorDocument 401 https://www.awgeshit.com/#error
+ErrorDocument 400 https://www.awgeshit.com/#error
+ErrorDocument 500 https://www.awgeshit.com/#error
+ErrorDocument 416 https://www.awgeshit.com/#error
+
+Options -Indexes
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
+Options All -Indexes
